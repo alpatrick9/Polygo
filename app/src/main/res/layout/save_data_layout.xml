@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/stationEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/station_placeholder" />
+
+    <EditText
+        android:id="@+id/pvEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stationEditText"
+        android:hint="@string/pv_placeholder" />
+
+    <EditText
+        android:id="@+id/hzEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pvEditText"
+        android:hint="@string/hz_placeholder"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/vEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hzEditText"
+        android:hint="@string/v_placeholder"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/diEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vEditText"
+        android:hint="@string/di_placeholder"
+        android:inputType="numberDecimal"/>
+
+</RelativeLayout>

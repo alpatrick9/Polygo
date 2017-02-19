@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Polygo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="station_title">Stations</string>
+    <string name="pv_title">PV</string>
+    <string name="hz_title">HZ</string>
+    <string name="v_title">V</string>
+    <string name="di_title">Di</string>
+    <string name="save_title">Enregistrement de données</string>
+    <string name="succes">Données bien enregistrés</string>
+    <string name="erreur">Erreur d\'enregistrement</string>
+    <string name="invalid_data">Les données ne sont pas valides, vérifier les champs de saisi</string>
+    <string name="station_placeholder">Stations</string>
+    <string name="pv_placeholder">Pv</string>
+    <string name="hz_placeholder">Hz</string>
+    <string name="v_placeholder">V</string>
+    <string name="di_placeholder">Di</string>
+    <string name="add_data_menu">Ajouter des données</string>
+    <string name="clear_all">Effacer tout</string>
+    <string name="update_title" >Mise à jour de station %1$s</string>
+    <string name="delete_label">Supprimer</string>
+    <string name="cancel">Annuler</string>
+    <string name="message_confirm_del">Voulez vous supprimer le station %1$s</string>
+    <string name="message_confirm_del_all">Voulez vous tous effacer?</string>
+</resources>
