@@ -1,4 +1,4 @@
-package mg.developer.patmi.polygo.models;
+package mg.developer.patmi.polygo.models.entity;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

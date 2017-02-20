@@ -7,7 +7,7 @@ import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
 
-import mg.developer.patmi.polygo.models.Data;
+import mg.developer.patmi.polygo.models.entity.Data;
 
 /**
  * Created by developer on 10/5/16.

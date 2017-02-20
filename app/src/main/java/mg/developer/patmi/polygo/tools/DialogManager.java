@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import mg.developer.patmi.polygo.R;
 import mg.developer.patmi.polygo.dao.DataDao;
 import mg.developer.patmi.polygo.fragment.DataFragment;
-import mg.developer.patmi.polygo.models.Data;
+import mg.developer.patmi.polygo.models.entity.Data;
 
 /**
  * Created by patmi on 12/02/2017.

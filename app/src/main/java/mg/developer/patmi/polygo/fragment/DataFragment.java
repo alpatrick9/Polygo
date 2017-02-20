@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,10 +15,9 @@ import java.util.List;
 
 import mg.developer.patmi.polygo.R;
 import mg.developer.patmi.polygo.dao.DataDao;
-import mg.developer.patmi.polygo.models.Data;
+import mg.developer.patmi.polygo.models.entity.Data;
 import mg.developer.patmi.polygo.tools.DialogManager;
 import mg.developer.patmi.polygo.tools.TableTools;
-import mg.developer.patmi.polygo.tools.Tools;
 
 /**
  * Created by patmi on 30/01/2017.

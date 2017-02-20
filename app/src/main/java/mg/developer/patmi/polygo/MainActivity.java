@@ -105,6 +105,8 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
             case R.id.nav_result:
                 fragment = new ResultFragment();
                 break;
+            case R.id.nav_init_data:
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
