@@ -1,6 +1,9 @@
 package mg.developer.patmi.polygo.tools.bean_manager;
 
+import android.content.Context;
+
 import mg.developer.patmi.polygo.models.bean.Default;
+import mg.developer.patmi.polygo.tools.json_manager.DefaultDataJsonManager;
 
 /**
  * Created by developer on 2/21/17.
@@ -8,20 +11,16 @@ import mg.developer.patmi.polygo.models.bean.Default;
 
 public class DefaultDataManager {
 
-    private static Default data = new Default();
-
-    public static Default getDefaultData() {
-        // à recuperer d'un fichier json
-        return data;
+    public static Default getDefaultData(Context context) {
+        return DefaultDataJsonManager.jsonReader(context);
     }
 
-    public static void setDefaultData(Default data) {
-        // modifier le fichier json
-        DefaultDataManager.data = data;
+    public static void setDefaultData(Context context, Default data) {
+        DefaultDataJsonManager.jsonWriter(context,data);
     }
 
-    public static boolean isDefaultSet() {
-        Default data = DefaultDataManager.getDefaultData();
+    public static boolean isDefaultSet(Context context) {
+        Default data = DefaultDataManager.getDefaultData(context);
         return
                 data.getV0Depart() != null &&
                 data.getxStation() != null &&

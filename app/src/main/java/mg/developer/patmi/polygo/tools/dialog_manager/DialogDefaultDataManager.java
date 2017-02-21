@@ -2,7 +2,6 @@ package mg.developer.patmi.polygo.tools.dialog_manager;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
@@ -19,11 +18,8 @@ import mg.developer.patmi.polygo.dao.DataDao;
 import mg.developer.patmi.polygo.models.bean.Default;
 import mg.developer.patmi.polygo.models.bean.Result;
 import mg.developer.patmi.polygo.models.entity.Data;
-import mg.developer.patmi.polygo.tools.Tools;
 import mg.developer.patmi.polygo.tools.bean_manager.DefaultDataManager;
 import mg.developer.patmi.polygo.tools.bean_manager.ResultManager;
-
-import static android.R.attr.action;
 
 /**
  * Created by developer on 2/21/17.
@@ -32,7 +28,7 @@ import static android.R.attr.action;
 public class DialogDefaultDataManager {
 
     public static void dialogChangeDefaultData(final Context context) {
-        Default data = DefaultDataManager.getDefaultData();
+        Default data = DefaultDataManager.getDefaultData(context);
         createDialog(context, data);
     }
 
@@ -80,7 +76,19 @@ public class DialogDefaultDataManager {
                                         @Override
                                         public void run() {
                                             Toast.makeText(context, ((Activity) context).getResources().getString(R.string.info_default_data), Toast.LENGTH_SHORT).show();
+                                            DataDao dataDao = new DataDao(context);
+                                            try {
+                                                List<Data> datas = dataDao.findAll();
+                                                ResultManager.resetResults(context);
+                                                for(Data d: datas) {
+                                                    Result r = ResultManager.calculResult(context, d);
+                                                    ResultManager.addResult(context,r);
+                                                }
+                                            } catch (SQLException e) {
+                                                e.printStackTrace();
+                                            }
 
+                                            dialog.cancel();
                                         }
                                     });
                                 }
@@ -88,20 +96,7 @@ public class DialogDefaultDataManager {
                             new Thread() {
                                 @Override
                                 public void run() {
-                                    DefaultDataManager.setDefaultData(data);
-                                    DataDao dataDao = new DataDao(context);
-                                    try {
-                                        List<Data> datas = dataDao.findAll();
-                                        ResultManager.resetResults();
-                                        for(Data d: datas) {
-                                            Result r = ResultManager.calculResult(d);
-                                            ResultManager.addResult(r);
-                                        }
-                                    } catch (SQLException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                    dialog.cancel();
+                                    DefaultDataManager.setDefaultData(context,data);
                                     handler.post(run);
                                 }
                             }.start();

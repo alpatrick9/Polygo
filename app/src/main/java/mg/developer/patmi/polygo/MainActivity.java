@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
 
         setContentView(R.layout.activity_main);
 
-        if(!DefaultDataManager.isDefaultSet()) {
+        if(!DefaultDataManager.isDefaultSet(this)) {
             DialogDefaultDataManager.dialogChangeDefaultData(this);
         }
 

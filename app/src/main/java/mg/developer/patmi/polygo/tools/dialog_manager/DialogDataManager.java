@@ -119,8 +119,8 @@ public class DialogDataManager {
                                                 final Data dataDb = dataDao.create(data);
                                                 isInsert = dataDb.getId() != null;
                                                 if(isInsert) {
-                                                    Result result = ResultManager.calculResult(dataDb);
-                                                    ResultManager.addResult(result);
+                                                    Result result = ResultManager.calculResult(context, dataDb);
+                                                    ResultManager.addResult(context, result);
                                                 }
                                                 break;
                                             case "update":

@@ -9,6 +9,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.List;
+
 import mg.developer.patmi.polygo.R;
 import mg.developer.patmi.polygo.models.bean.Result;
 import mg.developer.patmi.polygo.tools.TableTools;
@@ -57,8 +59,9 @@ public class ResultFragment extends Fragment {
     }
 
     private void bindDataToView() {
-        for (int i = 0; i < ResultManager.getResults().size(); i++) {
-            final Result result = ResultManager.getResults().get(i);
+        List<Result> results = ResultManager.getResults(getActivity());
+        for (int i = 0; i < results.size(); i++) {
+            final Result result = results.get(i);
 
             TableRow row = TableTools.addDefaultRow(getActivity(), resultTable);
 

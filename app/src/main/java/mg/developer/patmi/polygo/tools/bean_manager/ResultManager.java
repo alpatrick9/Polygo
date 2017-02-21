@@ -1,11 +1,14 @@
 package mg.developer.patmi.polygo.tools.bean_manager;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import mg.developer.patmi.polygo.models.bean.Result;
 import mg.developer.patmi.polygo.models.entity.Data;
 import mg.developer.patmi.polygo.tools.Converter;
+import mg.developer.patmi.polygo.tools.json_manager.ResultJsonManager;
 
 /**
  * Created by developer on 2/21/17.
@@ -13,32 +16,33 @@ import mg.developer.patmi.polygo.tools.Converter;
 
 public class ResultManager {
 
-    protected static List<Result> results = new ArrayList<>();
-
-    public static void addResult(Result result) {
-        ResultManager.results.add(result);
+    public static void addResult(Context context,Result result) {
+        List<Result> results = ResultManager.getResults(context);
+        results.add(result);
+        ResultJsonManager.jsonWriter(context, results);
     }
 
-    public static  List<Result> getResults() {
-        return ResultManager.results;
+    public static  List<Result> getResults(Context context) {
+        return ResultJsonManager.jsonReader(context);
     }
 
-    public static void resetResults() {
-        ResultManager.results = new ArrayList<>();
+    public static void resetResults(Context context) {
+        List<Result> results = new ArrayList<>();
+        ResultJsonManager.jsonWriter(context, results);
     }
 
-    public static Result calculResult(Data data) {
+    public static Result calculResult(Context context, Data data) {
         Result result = new Result();
 
         result.setData(data);
 
         result.setdH(ResultManager.dHFunction(data));
 
-        result.setGisement(ResultManager.gisementFunction(data));
+        result.setGisement(ResultManager.gisementFunction(context, data));
 
-        result.setxM(ResultManager.xmFunction(result));
+        result.setxM(ResultManager.xmFunction(context, result));
 
-        result.setyM(ResultManager.ymFunction(result));
+        result.setyM(ResultManager.ymFunction(context, result));
 
         return result;
     }
@@ -51,23 +55,23 @@ public class ResultManager {
         return Converter.decimalFormat(dh,2);
     }
 
-    protected static Double gisementFunction(Data data) {
-        Double alpha = DefaultDataManager.getDefaultData().getV0Depart()  + data.gethZ();
+    protected static Double gisementFunction(Context context, Data data) {
+        Double alpha = DefaultDataManager.getDefaultData(context).getV0Depart()  + data.gethZ();
         if(alpha > 400)
             return Converter.decimalFormat(alpha - 400,4);
         return Converter.decimalFormat(alpha,4);
     }
 
-    protected static Double xmFunction(Result result) {
-        Double xm = DefaultDataManager.getDefaultData().getxStation() +
+    protected static Double xmFunction(Context context, Result result) {
+        Double xm = DefaultDataManager.getDefaultData(context).getxStation() +
                 result.getdH() * Math.sin(
                         Converter.gradeToRadian(result.getGisement())
                 );
         return Converter.decimalFormat(xm, 2);
     }
 
-    protected static Double ymFunction(Result result) {
-        Double ym = DefaultDataManager.getDefaultData().getxStation() +
+    protected static Double ymFunction(Context context, Result result) {
+        Double ym = DefaultDataManager.getDefaultData(context).getxStation() +
                 result.getdH() * Math.cos(
                         Converter.gradeToRadian(result.getGisement())
                 );
