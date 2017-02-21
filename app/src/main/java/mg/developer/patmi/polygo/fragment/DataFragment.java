@@ -16,7 +16,7 @@ import java.util.List;
 import mg.developer.patmi.polygo.R;
 import mg.developer.patmi.polygo.dao.DataDao;
 import mg.developer.patmi.polygo.models.entity.Data;
-import mg.developer.patmi.polygo.tools.DialogManager;
+import mg.developer.patmi.polygo.tools.dialog_manager.DialogDataManager;
 import mg.developer.patmi.polygo.tools.TableTools;
 
 /**
@@ -83,7 +83,7 @@ public class DataFragment extends Fragment {
 
     private void bindDataToView() {
         for (int i = 0; i < datas.size(); i++) {
-            final DialogManager dialogManager = new DialogManager(getActivity());
+            final DialogDataManager dialogDataManager = new DialogDataManager(getActivity());
             final Data data = datas.get(i);
 
             TableRow row = TableTools.addDefaultRow(getActivity(), dataTable);
@@ -106,7 +106,7 @@ public class DataFragment extends Fragment {
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialogManager.dialogUpdateData(data.getId());
+                    dialogDataManager.dialogUpdateData(data.getId());
                 }
             });
 
@@ -114,7 +114,7 @@ public class DataFragment extends Fragment {
             row.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    dialogManager.dialogDataDelete(data);
+                    dialogDataManager.dialogDataDelete(data);
                     return false;
                 }
             });

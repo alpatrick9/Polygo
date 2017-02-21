@@ -1,4 +1,4 @@
-package mg.developer.patmi.polygo.tools;
+package mg.developer.patmi.polygo.tools.dialog_manager;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,19 +16,22 @@ import java.sql.SQLException;
 import mg.developer.patmi.polygo.R;
 import mg.developer.patmi.polygo.dao.DataDao;
 import mg.developer.patmi.polygo.fragment.DataFragment;
+import mg.developer.patmi.polygo.models.bean.Result;
 import mg.developer.patmi.polygo.models.entity.Data;
+import mg.developer.patmi.polygo.tools.Tools;
+import mg.developer.patmi.polygo.tools.bean_manager.ResultManager;
 
 /**
  * Created by patmi on 12/02/2017.
  */
-public class DialogManager {
+public class DialogDataManager {
 
     private Context context;
     private DataDao dataDao;
 
     private boolean isInsert = false;
 
-    public DialogManager(Context context) {
+    public DialogDataManager(Context context) {
         this.context = context;
         this.dataDao = new DataDao(this.context);
     }
@@ -113,7 +116,12 @@ public class DialogManager {
                                     try {
                                         switch (action) {
                                             case "save":
-                                                isInsert = dataDao.create(data) == 1;
+                                                final Data dataDb = dataDao.create(data);
+                                                isInsert = dataDb.getId() != null;
+                                                if(isInsert) {
+                                                    Result result = ResultManager.calculResult(dataDb);
+                                                    ResultManager.addResult(result);
+                                                }
                                                 break;
                                             case "update":
                                                 isInsert = dataDao.update(data) == 1;

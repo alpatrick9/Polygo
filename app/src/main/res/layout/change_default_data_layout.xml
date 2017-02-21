@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:text="@string/v0_placeholder"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/label"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/v0EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/v0_placeholder"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v0EditText"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:text="@string/x_station_placeholder"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/label"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/xStationEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v0EditText"
+        android:hint="@string/x_station_placeholder"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xStationEditText"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:text="@string/y_station_placeholder"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/label"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/yStationEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xStationEditText"
+        android:hint="@string/y_station_placeholder"
+        android:inputType="numberDecimal" />
+
+</RelativeLayout>

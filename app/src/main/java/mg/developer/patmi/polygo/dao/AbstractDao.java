@@ -27,8 +27,9 @@ public class AbstractDao<E,K> {
         }
         return result;
     }
-    public Integer create(E s) throws SQLException {
-        return dao.create(s);
+    public E create(E s) throws SQLException {
+        dao.create(s);
+        return s;
     }
 
     public Integer delete(E s) throws SQLException {

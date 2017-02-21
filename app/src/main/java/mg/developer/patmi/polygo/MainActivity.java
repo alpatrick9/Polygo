@@ -16,20 +16,26 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import mg.developer.patmi.polygo.configuration.SqliteHelper;
 import mg.developer.patmi.polygo.fragment.DataFragment;
 import mg.developer.patmi.polygo.fragment.ResultFragment;
-import mg.developer.patmi.polygo.tools.DialogManager;
+import mg.developer.patmi.polygo.tools.bean_manager.DefaultDataManager;
+import mg.developer.patmi.polygo.tools.dialog_manager.DialogDataManager;
 import mg.developer.patmi.polygo.tools.KeyboardManager;
 import mg.developer.patmi.polygo.tools.Tools;
+import mg.developer.patmi.polygo.tools.dialog_manager.DialogDefaultDataManager;
 
 public class MainActivity extends Activity implements NavigationView.OnNavigationItemSelectedListener {
 
     protected Toolbar toolbar;
-    protected DialogManager dialogManager;
+    protected DialogDataManager dialogDataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        if(!DefaultDataManager.isDefaultSet()) {
+            DialogDefaultDataManager.dialogChangeDefaultData(this);
+        }
 
         openHelperDatabase();
 
@@ -47,8 +53,9 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
     }
 
     protected void setProvider() {
-        dialogManager = new DialogManager(this);
+        dialogDataManager = new DialogDataManager(this);
     }
+
     protected void setView() {
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
@@ -106,6 +113,7 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
                 fragment = new ResultFragment();
                 break;
             case R.id.nav_init_data:
+                DialogDefaultDataManager.dialogChangeDefaultData(this);
                 break;
         }
 
@@ -122,10 +130,10 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.addDataMenu:
-                        dialogManager.dialogSaveData();
+                        dialogDataManager.dialogSaveData();
                         break;
                     case R.id.clearAllMenu:
-                        dialogManager.dialogDataDeleteAll();
+                        dialogDataManager.dialogDataDeleteAll();
                         break;
                 }
                 return false;
