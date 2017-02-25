@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/popup_background">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/title_color"
+            android:textSize="20dp"
+            android:layout_margin="@dimen/fab_margin"/>
+
+        <View
+            android:id="@+id/separation"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/title"
+            android:layout_height="2.5dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -12,6 +28,7 @@
             android:layout_marginLeft="@dimen/fab_margin"
             android:text="@string/v0_placeholder"
             android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@+id/separation"
             android:textSize="@dimen/label"
             android:textStyle="italic" />
 
@@ -20,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/v0_placeholder"
+            android:layout_below="@+id/separation"
             android:inputType="numberDecimal" />
 
         <TextView
@@ -57,6 +75,17 @@
             android:layout_below="@+id/xStationEditText"
             android:hint="@string/y_station_placeholder"
             android:inputType="numberDecimal" />
+        <Button
+            android:id="@+id/okButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/yStationEditText"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:text="@string/validate_button"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary" />
+
 
     </RelativeLayout>
 </ScrollView>

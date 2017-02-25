@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/popup_background">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/title_color"
+        android:textSize="20dp"
+        android:layout_margin="@dimen/fab_margin"/>
+
+    <View
+        android:id="@+id/separation"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/title"
+        android:layout_height="2.5dp"
+        android:background="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_below="@+id/separation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:textColor="#fff"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/okButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info"
+        android:layout_toLeftOf="@+id/cancelButton"
+        android:background="@android:color/transparent"
+        android:text="@string/validate_button"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/info"
+        android:background="@android:color/transparent"
+        android:text="@string/cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary" />
+
+</RelativeLayout>

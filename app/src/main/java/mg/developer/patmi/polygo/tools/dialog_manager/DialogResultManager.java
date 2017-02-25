@@ -7,7 +7,9 @@ import android.content.DialogInterface;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.SQLException;
@@ -33,6 +35,9 @@ public class DialogResultManager {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.show_detail_result, null);
 
+        TextView titleTextView = (TextView)dialogView.findViewById(R.id.title);
+        titleTextView.setText(context.getResources().getString(R.string.details));
+
         final EditText stationEditText = (EditText) dialogView.findViewById(R.id.stationEditText);
         final EditText pvEditText = (EditText) dialogView.findViewById(R.id.pvEditText);
         final EditText hzEditText = (EditText) dialogView.findViewById(R.id.hzEditText);
@@ -56,22 +61,22 @@ public class DialogResultManager {
         ym.setText(result.getyM() == null ? null : result.getyM().toString());
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-        // set title
-        alertDialogBuilder.setTitle(context.getResources().getString(R.string.details));
 
         // set dialog message
         alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(final DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+                .setCancelable(false);
 
         // create alert dialog
-        //AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialogBuilder.setView(dialogView);
-        // show it0
-        alertDialogBuilder.show();
+        // create alert dialog
+        final AlertDialog alertDialog = alertDialogBuilder.setView(dialogView).create();
+        alertDialog.show();
+
+        Button okButton = (Button) dialogView.findViewById(R.id.okButton);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.cancel();
+            }
+        });
     }
 }

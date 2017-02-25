@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/popup_background">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/title_color"
+            android:textSize="20dp"
+            android:layout_margin="@dimen/fab_margin"/>
+
+        <View
+            android:id="@+id/separation"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/title"
+            android:layout_height="2.5dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="5dp"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/separation"
             android:id="@+id/data_show">
 
             <TextView
@@ -22,7 +39,8 @@
                 android:id="@+id/stationEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"/>
+                android:editable="false"
+                android:focusable="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -39,7 +57,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/stationEditText"
-                android:editable="false" />
+                android:editable="false"
+                android:focusable="false" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,12 +69,14 @@
                 android:textSize="@dimen/label"
                 android:textStyle="italic"
                 android:layout_below="@+id/pvEditText"/>
+
             <EditText
                 android:id="@+id/hzEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/pvEditText"
-                android:editable="false"/>
+                android:editable="false"
+                android:focusable="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,7 +93,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/hzEditText"
-                android:editable="false"/>
+                android:editable="false"
+                android:focusable="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,13 +110,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/vEditText"
-                android:editable="false"/>
+                android:editable="false"
+                android:focusable="false"/>
 
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/data_show">
+            android:layout_below="@+id/data_show"
+            android:id="@+id/result_show">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,7 +133,8 @@
                 android:id="@+id/dh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"/>
+                android:editable="false"
+                android:focusable="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -126,7 +151,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:editable="false"
-                android:layout_below="@+id/dh"/>
+                android:layout_below="@+id/dh"
+                android:focusable="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -142,7 +168,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/gisement"
-                android:editable="false" />
+                android:editable="false"
+                android:focusable="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -159,7 +186,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/xm"
-                android:editable="false" />
+                android:editable="false"
+                android:focusable="false"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/result_show">
+            <Button
+                android:id="@+id/okButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/info"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/transparent"
+                android:text="@string/validate_button"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary" />
 
         </RelativeLayout>
     </RelativeLayout>
