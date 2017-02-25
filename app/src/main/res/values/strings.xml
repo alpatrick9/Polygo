@@ -43,4 +43,5 @@
     <string name="add_button">Ajouter</string>
     <string name="validate_button">Ok</string>
     <string name="information">Information</string>
+    <string name="export_message">Exportation terminé dans le dossier Polygo</string>
 </resources>

@@ -14,13 +14,19 @@ import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+
+import java.util.List;
 
 import mg.developer.patmi.polygo.configuration.SqliteHelper;
 import mg.developer.patmi.polygo.fragment.DataFragment;
 import mg.developer.patmi.polygo.fragment.ResultFragment;
+import mg.developer.patmi.polygo.models.bean.Result;
 import mg.developer.patmi.polygo.tools.bean_manager.DefaultDataManager;
+import mg.developer.patmi.polygo.tools.bean_manager.ResultManager;
+import mg.developer.patmi.polygo.tools.csv_manager.CsvManager;
 import mg.developer.patmi.polygo.tools.dialog_manager.DialogDataManager;
 import mg.developer.patmi.polygo.tools.KeyboardManager;
 import mg.developer.patmi.polygo.tools.Tools;
@@ -121,6 +127,13 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
                 break;
             case R.id.nav_init_data:
                 DialogDefaultDataManager.dialogChangeDefaultData(this);
+                break;
+            case R.id.nav_export:
+                List<Result> results = ResultManager.getResults(this);
+                if(!results.isEmpty()){
+                    CsvManager.excelExport(this, results);
+                    Toast.makeText(this, this.getResources().getString(R.string.export_message), Toast.LENGTH_LONG).show();
+                }
                 break;
         }
 
