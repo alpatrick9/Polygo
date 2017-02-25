@@ -1,6 +1,7 @@
 package mg.developer.patmi.polygo.tools;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
@@ -38,6 +39,10 @@ public class TableTools {
     }
 
     public static void addDefaultViewRow(Context context, String title, TextView textView, TableRow row) {
+
+        textView.setSingleLine(true);
+        textView.setEllipsize(TextUtils.TruncateAt.END);
+
         TableTools.addViewRow(context, title, textView, row, R.color.default_color);
     }
 
@@ -46,7 +51,7 @@ public class TableTools {
 
         ViewGroup.MarginLayoutParams paramsMargin = (ViewGroup.MarginLayoutParams) textView.getLayoutParams();
         paramsMargin.setMargins(1, 1, 1, 1);
-        paramsMargin.width = Tools.getWidth(context, 5);
+        paramsMargin.width = Tools.getWidth(context, 5) - 10;
         paramsMargin.height = ViewGroup.MarginLayoutParams.WRAP_CONTENT;
         textView.setLayoutParams(paramsMargin);
 

@@ -8,6 +8,7 @@ import java.util.List;
 import mg.developer.patmi.polygo.models.bean.Result;
 import mg.developer.patmi.polygo.models.entity.Data;
 import mg.developer.patmi.polygo.tools.Converter;
+import mg.developer.patmi.polygo.tools.json_manager.JsonManager;
 import mg.developer.patmi.polygo.tools.json_manager.ResultJsonManager;
 
 /**
@@ -31,8 +32,45 @@ public class ResultManager {
         ResultJsonManager.jsonWriter(context, results);
     }
 
-    public static Result calculResult(Context context, Data data) {
+    public static Result createNewResult(Context context, Data data) {
         Result result = new Result();
+        return calulResult(context, data, result);
+    }
+
+    public static void updateResult(Context context, Data data) {
+        List<Result> results = getResults(context);
+        if(results.isEmpty())
+            return;
+        for(int i = 0; i < results.size(); i++) {
+            Result result = results.get(i);
+            if(result.getData().getId() == data.getId()) {
+                result = calulResult(context, data, result);
+                results.set(i, result);
+                ResultJsonManager.jsonWriter(context,results);
+                break;
+            }
+        }
+    }
+
+    public static void deleteResult(Context context, Data data) {
+        List<Result> results = getResults(context);
+        if(results.isEmpty())
+            return;
+        for(int i = 0; i < results.size(); i++) {
+            Result result = results.get(i);
+            if(result.getData().getId() == data.getId()) {
+                results.remove(i);
+                ResultJsonManager.jsonWriter(context, results);
+            }
+        }
+    }
+
+    public static void deleteAllResult(Context context) {
+        List<Result> results = new ArrayList<>();
+        ResultJsonManager.jsonWriter(context, results);
+    }
+
+    private static Result calulResult(Context context, final Data data, final Result result) {
 
         result.setData(data);
 

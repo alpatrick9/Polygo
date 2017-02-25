@@ -2,6 +2,7 @@ package mg.developer.patmi.polygo.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +61,10 @@ public class DataFragment extends Fragment {
     }
 
     private void initView() {
+
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.data_title);
+
         dataTable = (TableLayout) rootView.findViewById(R.id.data);
         dataTable.setBackground(getResources().getDrawable(R.drawable.table_border));
 

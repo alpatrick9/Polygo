@@ -18,6 +18,6 @@ public class Converter {
             format += "#";
         }
         DecimalFormat df = new DecimalFormat(format);
-        return Double.parseDouble(df.format(value));
+        return Double.parseDouble(df.format(value).replace(",","."));
     }
 }

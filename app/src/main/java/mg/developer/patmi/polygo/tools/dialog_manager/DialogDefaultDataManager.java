@@ -15,9 +15,11 @@ import java.util.List;
 
 import mg.developer.patmi.polygo.R;
 import mg.developer.patmi.polygo.dao.DataDao;
+import mg.developer.patmi.polygo.fragment.ResultFragment;
 import mg.developer.patmi.polygo.models.bean.Default;
 import mg.developer.patmi.polygo.models.bean.Result;
 import mg.developer.patmi.polygo.models.entity.Data;
+import mg.developer.patmi.polygo.tools.Tools;
 import mg.developer.patmi.polygo.tools.bean_manager.DefaultDataManager;
 import mg.developer.patmi.polygo.tools.bean_manager.ResultManager;
 
@@ -81,9 +83,11 @@ public class DialogDefaultDataManager {
                                                 List<Data> datas = dataDao.findAll();
                                                 ResultManager.resetResults(context);
                                                 for(Data d: datas) {
-                                                    Result r = ResultManager.calculResult(context, d);
+                                                    Result r = ResultManager.createNewResult(context, d);
                                                     ResultManager.addResult(context,r);
                                                 }
+                                                ResultFragment fragment = new ResultFragment();
+                                                Tools.replaceFragment(context, fragment);
                                             } catch (SQLException e) {
                                                 e.printStackTrace();
                                             }

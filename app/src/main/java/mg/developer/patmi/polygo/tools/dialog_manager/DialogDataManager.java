@@ -119,12 +119,15 @@ public class DialogDataManager {
                                                 final Data dataDb = dataDao.create(data);
                                                 isInsert = dataDb.getId() != null;
                                                 if(isInsert) {
-                                                    Result result = ResultManager.calculResult(context, dataDb);
+                                                    Result result = ResultManager.createNewResult(context, dataDb);
                                                     ResultManager.addResult(context, result);
                                                 }
                                                 break;
                                             case "update":
                                                 isInsert = dataDao.update(data) == 1;
+                                                if(isInsert) {
+                                                    ResultManager.updateResult(context, data);
+                                                }
                                                 break;
                                         }
                                     } catch (SQLException e) {
@@ -162,7 +165,10 @@ public class DialogDataManager {
                 .setPositiveButton(context.getResources().getString(R.string.delete_label), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         try {
-                            dataDao.delete(data);
+                            int i = dataDao.delete(data);
+                            if(i == 0)
+                                return;
+                            ResultManager.deleteResult(context, data);
                             Fragment fragment = new DataFragment();
                             Tools.replaceFragment(context, fragment);
                         } catch (SQLException e) {
@@ -196,6 +202,7 @@ public class DialogDataManager {
                         try {
                             dataDao.deleteAll();
                             // ajouter la suppression de tous les resultats
+                            ResultManager.deleteAllResult(context);
                             Fragment fragment = new DataFragment();
                             Tools.replaceFragment(context, fragment);
                         } catch (SQLException e) {

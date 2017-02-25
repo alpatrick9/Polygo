@@ -35,4 +35,8 @@
     <string name="gisement_title">Gisement</string>
     <string name="xm_title">Xm</string>
     <string name="ym_title">Ym</string>
+    <string name="data_title">Liste des données</string>
+    <string name="result_title">Liste des résultats</string>
+    <string name="details">Détails des résultats</string>
+    <string name="auteur">By Alain Patrick Rajaonarison</string>
 </resources>

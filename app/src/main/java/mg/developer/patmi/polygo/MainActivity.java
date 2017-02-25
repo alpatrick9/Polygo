@@ -2,14 +2,18 @@ package mg.developer.patmi.polygo;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
@@ -88,6 +92,9 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        TextView textView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.copyright);
+        textView.setText(Html.fromHtml(infoApp()));
+
     }
 
     @Override
@@ -139,5 +146,18 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
                 return false;
             }
         });
+    }
+
+    public String infoApp() {
+        String copyright = "&copy; 2016";
+
+        try {
+            PackageInfo info = this.getPackageManager().getPackageInfo(this.getPackageName(), PackageManager.GET_META_DATA);
+            copyright = copyright+" v"+info.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return copyright;
     }
 }

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/data_show">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:text="@string/station_placeholder"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/label"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/stationEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:text="@string/pv_placeholder"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/label"
+                android:textStyle="italic"
+                android:layout_below="@+id/stationEditText"/>
+
+            <EditText
+                android:id="@+id/pvEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/stationEditText"
+                android:editable="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:text="@string/hz_placeholder"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/label"
+                android:textStyle="italic"
+                android:layout_below="@+id/pvEditText"/>
+            <EditText
+                android:id="@+id/hzEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pvEditText"
+                android:editable="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:text="@string/v_placeholder"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/label"
+                android:textStyle="italic"
+                android:layout_below="@+id/hzEditText"/>
+
+            <EditText
+                android:id="@+id/vEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hzEditText"
+                android:editable="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:text="@string/di_placeholder"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/label"
+                android:textStyle="italic"
+                android:layout_below="@+id/vEditText"/>
+            <EditText
+                android:id="@+id/diEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vEditText"
+                android:editable="false"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/data_show">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:text="@string/dh_title"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/label"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/dh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:text="@string/gisement_title"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/label"
+                android:textStyle="italic"
+                android:layout_below="@+id/dh"/>
+
+            <EditText
+                android:id="@+id/gisement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:layout_below="@+id/dh"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gisement"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:text="@string/xm_title"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/label"
+                android:textStyle="italic" />
+            <EditText
+                android:id="@+id/xm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gisement"
+                android:editable="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/xm"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:text="@string/ym_title"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/label"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/ym"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/xm"
+                android:editable="false" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

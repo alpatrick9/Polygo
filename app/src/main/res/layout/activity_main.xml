@@ -31,7 +31,8 @@
             android:id="@+id/contenaire"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar_contenaire"/>
+            android:layout_below="@+id/toolbar_contenaire"
+            android:background="@drawable/nav_header_background"/>
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView

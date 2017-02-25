@@ -2,6 +2,7 @@ package mg.developer.patmi.polygo.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import mg.developer.patmi.polygo.R;
 import mg.developer.patmi.polygo.models.bean.Result;
 import mg.developer.patmi.polygo.tools.TableTools;
 import mg.developer.patmi.polygo.tools.bean_manager.ResultManager;
+import mg.developer.patmi.polygo.tools.dialog_manager.DialogResultManager;
 
 /**
  * Created by patmi on 30/01/2017.
@@ -37,6 +39,9 @@ public class ResultFragment extends Fragment {
     }
 
     private void initView() {
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.result_title);
+
         resultTable = (TableLayout) rootView.findViewById(R.id.result);
         resultTable.setBackground(getResources().getDrawable(R.drawable.table_border));
 
@@ -79,6 +84,14 @@ public class ResultFragment extends Fragment {
 
             TextView ymTitle = new TextView(getActivity());
             TableTools.addDefaultViewRow(getActivity(), result.getyM().toString(), ymTitle, row);
+
+            row.setClickable(true);
+            row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogResultManager.showDetailsDialog(getActivity(),result);
+                }
+            });
 
         }
     }
