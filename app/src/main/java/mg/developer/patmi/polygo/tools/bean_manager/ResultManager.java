@@ -109,7 +109,7 @@ public class ResultManager {
     }
 
     protected static Double ymFunction(Context context, Result result) {
-        Double ym = DefaultDataManager.getDefaultData(context).getxStation() +
+        Double ym = DefaultDataManager.getDefaultData(context).getyStation() +
                 result.getdH() * Math.cos(
                         Converter.gradeToRadian(result.getGisement())
                 );
